@@ -1,10 +1,13 @@
+# string to test functions
+my_sen = 'There is nothing I adore more than python'
+
+
 # Exercise 1:
 # Write a Python function to read a sentence (text) and return a list of the 
 # length of each word in the sentence.
 # Use the function to read text from a file and calculate the length of each word in each
 # line.
-
-my_sen = 'There is anothing I love amore than pyhton'
+print('************ Excercise 1 *****************')
 
 def word_length(sentance):
     
@@ -19,6 +22,7 @@ def word_length(sentance):
     return mylist        
 
 twinkle = open('twinkle.txt', 'r')
+
 
 for line in twinkle:
     print(word_length(line))
@@ -64,7 +68,7 @@ out_file.close()
 # replace_all([1,2,5,6,2,7,1,2], [2,4],[200,400]) will replace all 
 # occurrences of 2 with 200 and all occurrences of 4 with 400 in the list 
 # [1,2,5,6,2,7,1,2], so should return [1,200,5,6,200,7,1,200]
-
+print('\n************ Excercise 4 *****************')
 def replace_all(list_in, l_out, l_in):
     my_list = list_in.copy()
 
@@ -107,6 +111,8 @@ out_file.close()
 # Exercise 5: Write a Python function to replace every word in a
 # sentence which is longer than 6 characters with “blah”. 
 
+
+print('\n************ Excercise 5 *****************')
 def blah_word(sentance):
     sentance_list = sentance.split(' ')
 
@@ -121,6 +127,53 @@ print(blah_word(my_sen))
 
 # Exercise 6: Write a Python program that reads text from a file and generates
 # a dictionary – a list of unique words. Save those words in a new file, one word per line.
+
+
+def dict_maker (words):
+    # This function expects a single long string of words
+    # with no \n and returns a list of unique words
+
+    my_dict = []
+
+    for word in words.split(' '):
+        if word.lower() not in my_dict:
+            my_dict.append(word.lower())
+
+    # One of the enteries in my_dict is the empty string ''
+    # remove this. But this will casue an error if '' not in the string, so
+    # use try catch
+    try:
+        my_dict.remove('')
+    except:
+        pass
+
+    return my_dict
+
+
+
+twinkle = open('twinkle.txt', 'r')
+
+# Turn the file into a single long string with no new lines or commas.
+# each word is seperated by a space
+my_text = ''
+for line in twinkle:
+    my_text += line.strip().replace(',', '') + ' '
+
+twinkle.close()
+
+with open('out_file.txt', 'w') as out_file:
+    for word in dict_maker(my_text):
+        out_file.write(word + '\n')
+
+
+
+
+
+
+
+
+
+
 
 
 
