@@ -104,10 +104,23 @@ twinkle.close()
 out_file.close()
     
 
+# Exercise 5: Write a Python function to replace every word in a
+# sentence which is longer than 6 characters with “blah”. 
+
+def blah_word(sentance):
+    sentance_list = sentance.split(' ')
+
+    for i in range(len(sentance_list)):
+       if len(sentance_list[i]) > 6:
+           sentance_list[i] = 'blah'
+        
+    return ' '.join(sentance_list)
+          
+print(blah_word(my_sen))
 
 
-
-
+# Exercise 6: Write a Python program that reads text from a file and generates
+# a dictionary – a list of unique words. Save those words in a new file, one word per line.
 
 
 
